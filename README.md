@@ -1,11 +1,14 @@
 # *Sigma Dimensions*
 
-*The Universal Rescale Mod for KSP*
+*The Universal Rescale Mod for KSP*, adopted by R-T-B with permission for changes under Sigma's ARR license.  Original work is ARR, but future changes are now permitted and PR's welcome.
 
+Proof of adoption:
+
+
+![prrof](https://i.imgur.com/AfqTNQn.png)
 
 ### Downloads
-- [GitHub](https://github.com/Sigma88/Sigma-Dimensions/releases)
-- [CurseForge](https://www.curseforge.com/kerbal/ksp-mods/sigma-dimensions) (Automatic install available)
+- [GitHub](https://github.com/R-T-B/Sigma-Dimensions/releases)
 
 
 ### Other Links
@@ -14,7 +17,7 @@
 
 
 ### Support
-If you enjoy my mods, please consider supporting me with a small donation.
+If you enjoy Sigmas ARR work, please consider supporting Sigma with a small donation.
 
 [![Donate Pounds](https://i.imgur.com/xBBQy19.png)][£][![Donate Euros](https://i.imgur.com/kKYb2lE.png)][€][![Donate Dollars](https://i.imgur.com/TT1Vymu.png)][$]
 
@@ -29,8 +32,6 @@ To report a bug or to ask for support, open an issue on [GitHub](https://github.
 
 
 ### How To Install
-
-This mod can be installed and updated automatically using the [CurseForge App](https://curseforge.overwolf.com/).
 
 To install the mod manually, follow these instructions:
 
