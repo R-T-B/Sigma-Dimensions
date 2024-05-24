@@ -25,7 +25,7 @@ namespace SigmaDimensionsPlugin
                 FixPressure(body, topLayer);
                 QuickFix(body.atmosphereTemperatureCurve, topLayer);
                 QuickFix(body.atmosphereTemperatureSunMultCurve, topLayer);
-                FixMaxAltitude(body, topLayer);
+                body.atmosphereDepth = topLayer; //from CashnipLeaf: was originally FixMaxAltitude(body, topLayer). I inlined it as it was only a single line.
 
                 Normalize(body, 1 / body.atmosphereDepth);
 
@@ -44,7 +44,11 @@ namespace SigmaDimensionsPlugin
             //if (body.transform.name == "Kerbin" && list.Count > 0) { list.RemoveAt(0); } 
 
             /* Avoid Bad Curves ==> */
-            if (list.Count < 2) { UnityEngine.Debug.Log("SigmaLog: This pressure curve has " + (list.Count == 0 ? "no keys" : "just one key") + ". I don't know what you expect me to do with that."); return; }
+            if (list.Count < 2) 
+            { 
+                UnityEngine.Debug.Log("SigmaLog: This pressure curve has " + (list.Count == 0 ? "no keys" : "just one key") + ". I don't know what you expect me to do with that."); 
+                return; 
+            }
 
             double maxAltitude = list.Last()[0];
 
@@ -88,8 +92,6 @@ namespace SigmaDimensionsPlugin
                 curve.Load(WriteCurve(list));
             }
         }
-
-        void FixMaxAltitude(CelestialBody body, double topLayer) => body.atmosphereDepth = topLayer;
 
         // Editors
 
@@ -165,6 +167,10 @@ namespace SigmaDimensionsPlugin
 
             for (int i = 0; i < list.Count; i++)
             {
+                //from CashnipLeaf: this should make what's going on more obvious
+                minPressure = Math.Min(minPressure, list[i][1]);
+                maxPressure = Math.Max(maxPressure, list[i][1]);
+                /*
                 if (list[i][1] < minPressure)
                 {
                     minPressure = list[i][1];
@@ -173,6 +179,7 @@ namespace SigmaDimensionsPlugin
                 {
                     maxPressure = list[i][1];
                 }
+                */
             }
 
             for (int i = 0; i < list.Count; i++)
@@ -203,7 +210,6 @@ namespace SigmaDimensionsPlugin
             {
                 Multiply(body.atmospherePressureCurve, altitude);
             }
-
             if (body.atmosphereTemperatureCurveIsNormalized)
             {
                 Multiply(body.atmosphereTemperatureCurve, altitude);
@@ -301,6 +307,17 @@ namespace SigmaDimensionsPlugin
         {
             double dX = X - prevKey[0];
 
+            //from CashnipLeaf: Converted to a switch statement since that's probably easier on the eyes
+            switch (curve)
+            {
+                case Ktype.Exponential:
+                    return prevKey[1] * Math.Exp(dX * K[0]);
+                case Ktype.Logarithmic:
+                    return K[0] * Math.Log(X / prevKey[0]) + prevKey[1];
+                default:
+                    return dX * (K[0] * (X + prevKey[0]) + K[1]) + prevKey[1];
+            }
+            /*
             if (curve == Ktype.Exponential)
             {
                 // Exponential Curve:   Y1/Y0 = EXP(dX * K);
@@ -316,6 +333,7 @@ namespace SigmaDimensionsPlugin
                 // Polynomial Curve:    dY = dX * ( K0 * (X0 + X1) + K1 )
                 return dX * (K[0] * (X + prevKey[0]) + K[1]) + prevKey[1];
             }
+            */
         }
 
         enum Ktype
@@ -325,6 +343,7 @@ namespace SigmaDimensionsPlugin
             Polynomial
         }
 
+        //from CashnipLeaf: why are there four overloads for PrintCurve() ?
         // DEBUG
 
         void PrintCurve(CelestialBody body, string name)
@@ -335,10 +354,7 @@ namespace SigmaDimensionsPlugin
             PrintCurve(body.atmosphereTemperatureSunMultCurve, "temperatureSunMultCurve");
         }
 
-        void PrintCurve(List<double[]> list, string name)
-        {
-            PrintCurve(WriteCurve(list), name);
-        }
+        void PrintCurve(List<double[]> list, string name) => PrintCurve(WriteCurve(list), name);
 
         void PrintCurve(ConfigNode config, string name)
         {
