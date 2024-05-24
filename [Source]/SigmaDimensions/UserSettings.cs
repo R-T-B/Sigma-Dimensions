@@ -3,32 +3,29 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-
 namespace SigmaDimensionsPlugin
 {
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
     internal class UserSettings : MonoBehaviour
     {
-        internal static ConfigNode ConfigNode
-        {
-            get
-            {
-                return GameDatabase.Instance?.GetConfigs(nodeName)?.FirstOrDefault(n => n.url == (folder.Substring(9) + file + "/" + nodeName))?.config;
-            }
-        }
+        internal static ConfigNode ConfigNode => GameDatabase.Instance?.GetConfigs(nodeName)?.FirstOrDefault(n => n.url == (folder.Substring(9) + file + "/" + nodeName))?.config;
 
-        static string folder = "GameData/SigmaDimensions/";
-        static string file = "Settings";
-        internal static string nodeName = "SigmaDimensions";
+        const string folder = "GameData/SigmaDimensions/";
+        const string file = "Settings";
+        internal const string nodeName = "SigmaDimensions";
 
         void Awake()
         {
             string path = Assembly.GetExecutingAssembly().Location.Replace('\\', '/');
             while (path.Substring(1).Contains("GameData/"))
+            {
                 path = path.Substring(1 + path.Substring(1).IndexOf("GameData/"));
+            }
             if (path != folder + "Plugins/" + Path.GetFileName(path))
+            {
                 UnityEngine.Debug.Log(Debug.Tag + " WARNING: Incorrect plugin location => " + path);
-
+            }
+                
             if (!Directory.Exists(folder))
             {
                 UnityEngine.Debug.Log(Debug.Tag + " WARNING: Missing folder => " + folder);
@@ -58,7 +55,9 @@ namespace SigmaDimensionsPlugin
             for (int i = 0; i < configs?.Length; i++)
             {
                 if (configs[i].url != (folder.Substring(9) + file + "/" + nodeName))
+                {
                     configs[i].parent.configs.Remove(configs[i]);
+                } 
             }
         }
     }

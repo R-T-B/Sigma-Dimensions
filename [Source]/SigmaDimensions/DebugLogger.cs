@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 namespace SigmaDimensionsPlugin
 {
     internal static class Debug

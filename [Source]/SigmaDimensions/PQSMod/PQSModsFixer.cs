@@ -4,7 +4,6 @@ using Kopernicus;
 using Kopernicus.Configuration;
 using Debug = SigmaDimensionsPlugin.Debug;
 
-
 namespace PQSMod_SigmaDimensions
 {
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
@@ -28,8 +27,10 @@ namespace PQSMod_SigmaDimensions
             // PQS MODS LIST
             PQSMod[] modlist = generatedBody?.pqsVersion?.gameObject?.GetComponentInChildren<PQS>(true)?.GetComponentsInChildren<PQSMod>(true);
 
-            if (generatedBody == null || mod == null || modlist == null) return;
-
+            if (generatedBody == null || mod == null || modlist == null)
+            {
+                return;
+            }
 
             // PQS MATERIALS
             string[] textures = new[] { "_groundTexStart", "_groundTexEnd", "_steepTexStart", "_steepTexEnd" };
@@ -107,13 +108,13 @@ namespace PQSMod_SigmaDimensions
 
             if (scaleByRadius?.FieldType == typeof(bool) && (scaleByRadius?.GetValue(mod) as bool?) == true)
             {
-                FieldInfo deformity = mod.GetType().GetField("heightMapDeformity");
-
-                if (deformity == null)
-                    deformity = mod.GetType().GetField("deformity");
+                FieldInfo deformity = mod.GetType().GetField("heightMapDeformity") ?? mod.GetType().GetField("deformity");
 
                 if (deformity?.FieldType == typeof(double))
+                {
                     deformity.SetValue(mod, (double)deformity.GetValue(mod) / Resize);
+                }
+                    
             }
         }
 

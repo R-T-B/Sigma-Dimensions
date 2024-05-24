@@ -5,7 +5,6 @@ using UnityEngine;
 using Kopernicus;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 
-
 namespace SigmaDimensionsPlugin
 {
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
@@ -40,8 +39,10 @@ namespace SigmaDimensionsPlugin
             FloatCurve curve = body.atmospherePressureCurve;
             List<double[]> list = ReadCurve(curve);
 
+            //From CashnipLeaf: Hack fix that isnt necessary anymore. All it does now is break homeworld atmospheres. I've commented it out to disable it.
             /* Remove ISP FIX   ==> */
-            if (body.transform.name == "Kerbin" && list.Count > 0) { list.RemoveAt(0); }
+            //if (body.transform.name == "Kerbin" && list.Count > 0) { list.RemoveAt(0); } 
+
             /* Avoid Bad Curves ==> */
             if (list.Count < 2) { UnityEngine.Debug.Log("SigmaLog: This pressure curve has " + (list.Count == 0 ? "no keys" : "just one key") + ". I don't know what you expect me to do with that."); return; }
 
@@ -49,7 +50,10 @@ namespace SigmaDimensionsPlugin
 
             bool smoothEnd = list.Last()[1] == 0 && list.Count > 2;
 
-            if (smoothEnd) list.RemoveAt(list.Count - 1);
+            if (smoothEnd) 
+            {
+                list.RemoveAt(list.Count - 1);
+            }
 
             if (topLayer > maxAltitude)
             {
@@ -67,8 +71,9 @@ namespace SigmaDimensionsPlugin
                 Smooth(list);
             }
 
+            //From CashnipLeaf: See my earlier comment about the hack fix.
             /* Restore ISP FIX ==> */
-            if (body.transform.name == "Kerbin") { list.Insert(0, new[] { 0, 101.325, 0, 0, }); }
+            //if (body.transform.name == "Kerbin") { list.Insert(0, new[] { 0, 101.325, 0, 0, }); }
 
             curve.Load(WriteCurve(list));
         }
@@ -84,10 +89,7 @@ namespace SigmaDimensionsPlugin
             }
         }
 
-        void FixMaxAltitude(CelestialBody body, double topLayer)
-        {
-            body.atmosphereDepth = topLayer;
-        }
+        void FixMaxAltitude(CelestialBody body, double topLayer) => body.atmosphereDepth = topLayer;
 
         // Editors
 
@@ -108,9 +110,13 @@ namespace SigmaDimensionsPlugin
                 if (newKey[1] < 0)
                 {
                     if (list.Last()[1] == 0)
+                    {
                         break;
+                    }
                     else
+                    {
                         newKey[1] = 0;
+                    }   
                 }
 
                 list.Add(newKey);
@@ -160,9 +166,13 @@ namespace SigmaDimensionsPlugin
             for (int i = 0; i < list.Count; i++)
             {
                 if (list[i][1] < minPressure)
+                {
                     minPressure = list[i][1];
+                }
                 if (list[i][1] > maxPressure)
+                {
                     maxPressure = list[i][1];
+                }
             }
 
             for (int i = 0; i < list.Count; i++)
@@ -190,10 +200,14 @@ namespace SigmaDimensionsPlugin
         void Normalize(CelestialBody body, double altitude)
         {
             if (body.atmospherePressureCurveIsNormalized)
+            {
                 Multiply(body.atmospherePressureCurve, altitude);
+            }
 
             if (body.atmosphereTemperatureCurveIsNormalized)
+            {
                 Multiply(body.atmosphereTemperatureCurve, altitude);
+            }
         }
 
         void Multiply(FloatCurve curve, double multiplier)

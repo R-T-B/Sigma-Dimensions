@@ -2,7 +2,6 @@
 using UnityEngine;
 using Kopernicus;
 
-
 namespace SigmaDimensionsPlugin
 {
     public class PQSCity2Fixer : MonoBehaviour
@@ -20,13 +19,22 @@ namespace SigmaDimensionsPlugin
                 time = 0;
 
                 CelestialBody body = FlightGlobals.currentMainBody;
-                if (body == null) return;
+                if (body == null) 
+                {
+                    return;
+                }
 
                 PQS pqs = body.pqsController;
-                if (pqs == null) return;
+                if (pqs == null) 
+                {
+                    return;
+                }
 
                 PQSCity2 city = GetComponent<PQSCity2>();
-                if (city == null) return;
+                if (city == null) 
+                {
+                    return;
+                }
 
                 // Location
                 Vector3 planet = body.transform.position;
