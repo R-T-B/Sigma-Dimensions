@@ -353,8 +353,8 @@ namespace SigmaDimensionsPlugin
             }
         }
 
-        //from CashnipLeaf:
-        //TODO: what even is this? can I remove this?
+        //from CashnipLeaf: what even is this class? can I remove this?
+        //TODO: investigate whether it can be removed
         public class LatLon
         {
             double[] data = { 1, 1, 1 };
@@ -402,19 +402,11 @@ namespace SigmaDimensionsPlugin
                 }
             }
 
-            void Update()
-            {
-                v = Utility.LLAtoECEF(data[0], data[1], 0, data[2]);
-            }
+            void Update() => v = Utility.LLAtoECEF(data[0], data[1], 0, data[2]);
 
-            public LatLon()
-            {
-            }
+            public LatLon() { }
 
-            public LatLon(Vector3 input)
-            {
-                vector = input;
-            }
+            public LatLon(Vector3 input) => vector = input;
 
             public LatLon(LatLon input)
             {

@@ -114,8 +114,7 @@ namespace SigmaDimensionsPlugin
                 }
 
                 // If the Center position has not been found get it from the external groups
-                if
-                (center == null && ExternalGroups?.ContainsKey(body) == true && ExternalGroups[body].ContainsKey(group) )
+                if (center == null && ExternalGroups?.ContainsKey(body) == true && ExternalGroups[body].ContainsKey(group) )
                 {
                     center = GetPosition(ExternalGroups[body][group].FirstOrDefault());
                 }
@@ -247,22 +246,24 @@ namespace SigmaDimensionsPlugin
                     var info = new KeyValuePair<Vector3, NumericParser<double>[]>((Vector3)newCenter, new[] { 0, 0, new NumericParser<double>() });
 
                     if (C2.HasValue("Rotate"))
-                     {
+                    {
                         info.Value[0].SetFromString(C2.GetValue("Rotate"));
-                    } Debug.Log("PQSCityGroups.SaveGroups", "Rotate group = " + info.Value[0].Value);
+                        Debug.Log("PQSCityGroups.SaveGroups", "Rotate group = " + info.Value[0].Value);
+                    } 
                     if (C2.HasValue("fixAltitude"))
                     {
                         info.Value[1].SetFromString(C2.GetValue("fixAltitude"));
-                    } Debug.Log("PQSCityGroups.SaveGroups", "Fix group altitude = " + info.Value[1].Value);
+                        Debug.Log("PQSCityGroups.SaveGroups", "Fix group altitude = " + info.Value[1].Value);
+                    } 
                     if (C2.HasValue("originalAltitude"))
                     {
                         info.Value[2].SetFromString(C2.GetValue("originalAltitude"));
                     }
                     else
                     {
-                        info.Value[2].SetFromString("-Infinity"); Debug.Log("PQSCityGroups.SaveGroups", "Original group altitude = " + (info.Value[2].Value == double.NegativeInfinity ? "[Not Specified]" : info.Value[2].Value.ToString()));
+                        info.Value[2].SetFromString("-Infinity"); 
+                        Debug.Log("PQSCityGroups.SaveGroups", "Original group altitude = " + (info.Value[2].Value == double.NegativeInfinity ? "[Not Specified]" : info.Value[2].Value.ToString()));
                     }
-                        
 
 
                     if (!body.Has("PQSCityGroupsMove"))

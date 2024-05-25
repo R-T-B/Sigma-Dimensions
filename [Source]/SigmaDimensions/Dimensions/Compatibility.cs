@@ -56,6 +56,9 @@ namespace SigmaDimensionsPlugin
                         spikesSettings.SetFromString(star.GetValue("spikesSettings").Replace(",", " "));
                     }
 
+
+                    //from CashnipLeaf: Would probs be better to combine these via ternary operators
+                    //TODO: combine via ternary operators
                     // Rescale Scatterer Settings
                     if (customRescale != 1)
                     {
