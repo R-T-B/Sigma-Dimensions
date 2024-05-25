@@ -2,10 +2,12 @@
 
 namespace SigmaDimensionsPlugin
 {
+    //from CashnipLeaf: Why is this called "Debug"?? It can easily get mixed up with UnityEngine.Debug 
+    //TODO: Rename to something other than "Debug"
     internal static class Debug
     {
         internal static bool debug = false;
-        internal static string Tag = "[SigmaLog SD]";
+        internal const string Tag = "[SigmaLog SD]";
 
         internal static void Log(string message)
         {

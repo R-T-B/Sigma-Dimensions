@@ -42,7 +42,7 @@ namespace SigmaDimensionsPlugin
         [ParserTarget("debug", Optional = true)]
         NumericParser<bool> debug
         {
-            set => Debug.debug = value?.Value == true ? true : Debug.debug;
+            set => Debug.debug = value?.Value == true || Debug.debug;
         }
 
         void IParserEventSubscriber.Apply(ConfigNode node)

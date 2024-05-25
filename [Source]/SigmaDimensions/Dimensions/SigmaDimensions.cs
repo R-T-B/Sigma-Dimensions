@@ -23,7 +23,6 @@ namespace SigmaDimensionsPlugin
 
                 Debug.Log("SigmaDimensions.Start", "> Planet: " + body.name + (body.name != body.displayName.Replace("^N", "") ? (", (A.K.A.: " + body.displayName.Replace("^N", "") + ")") : "") + (body.name != body.transform.name ? (", (A.K.A.: " + body.transform.name + ")") : ""));
 
-
                 // Sigma Dimensions Settings
                 resize = body.Has("resize") ? body.Get<double>("resize") : 1;
                 landscape = body.Has("landscape") ? body.Get<double>("landscape") : 1;
@@ -287,7 +286,9 @@ namespace SigmaDimensionsPlugin
         {
             string type = mod.GetType().ToString();
             if (type == "PQSCity")
+            {
                 ((PQSCity)mod).repositionRadial = position;
+            }
             else if (type == "PQSCity2")
             {
                 LatLon LLA = new LatLon(position);
@@ -352,6 +353,8 @@ namespace SigmaDimensionsPlugin
             }
         }
 
+        //from CashnipLeaf:
+        //TODO: what even is this? can I remove this?
         public class LatLon
         {
             double[] data = { 1, 1, 1 };

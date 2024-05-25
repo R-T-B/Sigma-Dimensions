@@ -115,11 +115,7 @@ namespace SigmaDimensionsPlugin
 
                 // If the Center position has not been found get it from the external groups
                 if
-                (
-                    center == null &&
-                    ExternalGroups?.ContainsKey(body) == true &&
-                    ExternalGroups[body].ContainsKey(group)
-                )
+                (center == null && ExternalGroups?.ContainsKey(body) == true && ExternalGroups[body].ContainsKey(group) )
                 {
                     center = GetPosition(ExternalGroups[body][group].FirstOrDefault());
                 }
@@ -382,7 +378,6 @@ namespace SigmaDimensionsPlugin
                         ExcludeList.Remove(ksc);
                     }
 
-
                     planet.Set("ExcludedPQSCityMods", ExcludeList);
                 }
             }
@@ -390,6 +385,8 @@ namespace SigmaDimensionsPlugin
 
         Vector3? GetCenter(ConfigNode node, CelestialBody body)
         {
+            //from Cashnipleaf: this is a truly monstrous if/else chain. is there a way to condense it?
+            //TODO: find a way to compact this
             if (node.HasValue("CentralPQSCity"))
             {
                 return body.GetComponentsInChildren<PQSCity>(true).FirstOrDefault(p => p.name == node.GetValue("CentralPQSCity")).repositionRadial;

@@ -10,7 +10,7 @@ namespace SigmaDimensionsPlugin
     {
         internal static ConfigNode ConfigNode => GameDatabase.Instance?.GetConfigs(nodeName)?.FirstOrDefault(n => n.url == (folder.Substring(9) + file + "/" + nodeName))?.config;
 
-        //from CashnipLeaf: These were static but arent edited by anything. made them const.
+        //from CashnipLeaf: These were static but arent ever edited by anything. made them const.
         const string folder = "GameData/SigmaDimensions/";
         const string file = "Settings";
         internal const string nodeName = "SigmaDimensions";

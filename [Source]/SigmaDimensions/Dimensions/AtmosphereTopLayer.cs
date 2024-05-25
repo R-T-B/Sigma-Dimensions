@@ -10,6 +10,8 @@ namespace SigmaDimensionsPlugin
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
     internal class AtmosphereTopLayer : MonoBehaviour
     {
+        //from CashnipLeaf: is it necessary to have this as an instance variable?
+        //TODO: look into whether this can be deleted.
         Ktype curve = Ktype.Exponential;
 
         void Start()
@@ -39,7 +41,8 @@ namespace SigmaDimensionsPlugin
             FloatCurve curve = body.atmospherePressureCurve;
             List<double[]> list = ReadCurve(curve);
 
-            //From CashnipLeaf: Hack fix that isnt necessary anymore. All it does now is break homeworld atmospheres. I've commented it out to disable it.
+            //From CashnipLeaf: Hack fix that isnt necessary anymore. I believe this was necessary at some point to prevent issues with calculating ISP and delta-v,
+            //but that's now handled by Kopernicus. All this does now is break homeworld atmospheres. I've commented it out to disable it.
             /* Remove ISP FIX   ==> */
             //if (body.transform.name == "Kerbin" && list.Count > 0) { list.RemoveAt(0); } 
 
@@ -86,7 +89,13 @@ namespace SigmaDimensionsPlugin
         {
             if (topLayer > curve.maxTime)
             {
-                List<double[]> list = ReadCurve(curve); /* Avoid Bad Curves ==> */ if (list.Count == 0) { Debug.Log("AtmosphereTopLayer.QuickFix", "This curve is pointless."); return; }
+                List<double[]> list = ReadCurve(curve); 
+                /* Avoid Bad Curves ==> */ 
+                if (list.Count == 0) 
+                { 
+                    Debug.Log("AtmosphereTopLayer.QuickFix", "This curve is pointless."); 
+                    return; 
+                }
                 list.Last()[3] = 0;
                 list.Add(new double[] { topLayer, list.Last()[1], 0, 0 });
                 curve.Load(WriteCurve(list));
@@ -170,7 +179,7 @@ namespace SigmaDimensionsPlugin
                 //from CashnipLeaf: this should make what's going on more obvious
                 minPressure = Math.Min(minPressure, list[i][1]);
                 maxPressure = Math.Max(maxPressure, list[i][1]);
-                /*
+                /* OLD CODE
                 if (list[i][1] < minPressure)
                 {
                     minPressure = list[i][1];
@@ -218,7 +227,7 @@ namespace SigmaDimensionsPlugin
 
         void Multiply(FloatCurve curve, double multiplier)
         {
-            List<double[]> list = new List<double[]>();
+            List<double[]> list = new List<double[]>(); 
             list = ReadCurve(curve);
             foreach (double[] key in list)
             {
@@ -269,6 +278,8 @@ namespace SigmaDimensionsPlugin
 
         double[] getK(List<double[]> list)
         {
+            //from CashnipLeaf: is it necessary to decare a K if it just gets returned immediately after its set to a value?
+            //TODO: remove the K
             double[] K = { };
             if (list.Count == 2)
             {
@@ -307,7 +318,7 @@ namespace SigmaDimensionsPlugin
         {
             double dX = X - prevKey[0];
 
-            //from CashnipLeaf: Converted to a switch statement since that's probably easier on the eyes
+            //from CashnipLeaf: Converted to a switch statement since that's more compact
             switch (curve)
             {
                 case Ktype.Exponential:
@@ -317,7 +328,7 @@ namespace SigmaDimensionsPlugin
                 default:
                     return dX * (K[0] * (X + prevKey[0]) + K[1]) + prevKey[1];
             }
-            /*
+            /* OLD CODE
             if (curve == Ktype.Exponential)
             {
                 // Exponential Curve:   Y1/Y0 = EXP(dX * K);
@@ -336,6 +347,7 @@ namespace SigmaDimensionsPlugin
             */
         }
 
+        //from CashnipLeaf: Is there a better way of doing things than this?
         enum Ktype
         {
             Exponential,
@@ -343,7 +355,6 @@ namespace SigmaDimensionsPlugin
             Polynomial
         }
 
-        //from CashnipLeaf: why are there four overloads for PrintCurve() ?
         // DEBUG
 
         void PrintCurve(CelestialBody body, string name)
@@ -356,6 +367,8 @@ namespace SigmaDimensionsPlugin
 
         void PrintCurve(List<double[]> list, string name) => PrintCurve(WriteCurve(list), name);
 
+        //from CashnipLeaf: this is on its own despite being referenced by only one other override.
+        //TODO: inline
         void PrintCurve(ConfigNode config, string name)
         {
             FloatCurve curve = new FloatCurve();
