@@ -2,7 +2,6 @@
 using UnityEngine;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 
-
 namespace SigmaDimensionsPlugin
 {
     [KSPAddon(KSPAddon.Startup.Instantly, true)]
@@ -11,9 +10,14 @@ namespace SigmaDimensionsPlugin
         private void Awake()
         {
             if (AssemblyLoader.loadedAssemblies.FirstOrDefault(a => a.name == "scatterer") == null)
+            {
                 DestroyImmediate(this);
+            }
             else
+            {
                 DontDestroyOnLoad(this);
+            }
+                
         }
 
         public void ModuleManagerPostLoad()
@@ -44,26 +48,41 @@ namespace SigmaDimensionsPlugin
                     double.TryParse(star.GetValue("sunGlareFadeDistance"), out sunGlareFadeDistance);
 
                     if (star.HasValue("flareSettings"))
+                    {
                         flareSettings.SetFromString(star.GetValue("flareSettings").Replace(",", " "));
+                    }
                     if (star.HasValue("spikesSettings"))
+                    {
                         spikesSettings.SetFromString(star.GetValue("spikesSettings").Replace(",", " "));
+                    }
 
+
+                    //from CashnipLeaf: Would probs be better to combine these via ternary operators
+                    //TODO: combine via ternary operators
                     // Rescale Scatterer Settings
                     if (customRescale != 1)
                     {
                         sunGlareFadeDistance *= customRescale;
                         if (flareSettings?.Value?.Count > 2)
+                        {
                             flareSettings.Value[2] = flareSettings.Value[2] / customRescale;
+                        }
                         if (spikesSettings?.Value?.Count > 2)
+                        {
                             spikesSettings.Value[2] = spikesSettings.Value[2] / customRescale;
+                        }
                     }
                     else
                     {
                         sunGlareFadeDistance *= Rescale;
                         if (flareSettings?.Value?.Count > 2)
+                        {
                             flareSettings.Value[2] = flareSettings.Value[2] / Rescale;
+                        }  
                         if (spikesSettings?.Value?.Count > 2)
+                        {
                             spikesSettings.Value[2] = spikesSettings.Value[2] / Rescale;
+                        }
                     }
 
                     // Save Rescaled Scatterer Settings

@@ -5,7 +5,6 @@ using UnityEngine;
 using Kopernicus;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 
-
 namespace SigmaDimensionsPlugin
 {
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
@@ -23,7 +22,6 @@ namespace SigmaDimensionsPlugin
                 body = FlightGlobals.Bodies[i];
 
                 Debug.Log("SigmaDimensions.Start", "> Planet: " + body.name + (body.name != body.displayName.Replace("^N", "") ? (", (A.K.A.: " + body.displayName.Replace("^N", "") + ")") : "") + (body.name != body.transform.name ? (", (A.K.A.: " + body.transform.name + ")") : ""));
-
 
                 // Sigma Dimensions Settings
                 resize = body.Has("resize") ? body.Get<double>("resize") : 1;
@@ -262,7 +260,9 @@ namespace SigmaDimensionsPlugin
 
             // Fix Altitude
             if (originalAltitude == double.NegativeInfinity)
+            {
                 originalAltitude = (body.pqsController.GetSurfaceHeight(origin.vector) - body.Radius) / (resize * landscape);
+            }
             Debug.Log("SigmaDimensions.MoveGroup", "        > Mod original altitude = " + originalAltitude);
 
             FixAltitude(mod, (body.pqsController.GetSurfaceHeight(target.vector) - body.Radius) / (resize * landscape) - originalAltitude, fixAltitude);
@@ -272,9 +272,13 @@ namespace SigmaDimensionsPlugin
         {
             string type = mod.GetType().ToString();
             if (type == "PQSCity")
+            {
                 return ((PQSCity)mod).repositionRadial;
+            }
             else if (type == "PQSCity2")
+            {
                 return ((PQSCity2)mod).PlanetRelativePosition;
+            } 
             return null;
         }
 
@@ -282,7 +286,9 @@ namespace SigmaDimensionsPlugin
         {
             string type = mod.GetType().ToString();
             if (type == "PQSCity")
+            {
                 ((PQSCity)mod).repositionRadial = position;
+            }
             else if (type == "PQSCity2")
             {
                 LatLon LLA = new LatLon(position);
@@ -338,11 +344,17 @@ namespace SigmaDimensionsPlugin
         {
             string type = mod.GetType().ToString();
             if (type == "PQSCity")
+            {
                 ((PQSCity)mod).reorientFinalAngle += angle;
+            }
             else if (type == "PQSCity2")
+            {
                 ((PQSCity2)mod).rotation += angle;
+            }
         }
 
+        //from CashnipLeaf: what even is this class? can I remove this?
+        //TODO: investigate whether it can be removed
         public class LatLon
         {
             double[] data = { 1, 1, 1 };
@@ -350,7 +362,7 @@ namespace SigmaDimensionsPlugin
 
             public double lat
             {
-                get { return data[0]; }
+                get => data[0];
                 set
                 {
                     data[0] = value;
@@ -360,7 +372,7 @@ namespace SigmaDimensionsPlugin
 
             public double lon
             {
-                get { return data[1]; }
+                get => data[1];
                 set
                 {
                     data[1] = value;
@@ -370,7 +382,7 @@ namespace SigmaDimensionsPlugin
 
             public double alt
             {
-                get { return data[2]; }
+                get => data[2];
                 set
                 {
                     data[2] = value;
@@ -380,7 +392,7 @@ namespace SigmaDimensionsPlugin
 
             public Vector3 vector
             {
-                get { return v; }
+                get => v;
                 set
                 {
                     v = value;
@@ -390,19 +402,11 @@ namespace SigmaDimensionsPlugin
                 }
             }
 
-            void Update()
-            {
-                v = Utility.LLAtoECEF(data[0], data[1], 0, data[2]);
-            }
+            void Update() => v = Utility.LLAtoECEF(data[0], data[1], 0, data[2]);
 
-            public LatLon()
-            {
-            }
+            public LatLon() { }
 
-            public LatLon(Vector3 input)
-            {
-                vector = input;
-            }
+            public LatLon(Vector3 input) => vector = input;
 
             public LatLon(LatLon input)
             {

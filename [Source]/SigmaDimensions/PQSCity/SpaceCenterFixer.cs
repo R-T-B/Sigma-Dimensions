@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Kopernicus;
 
-
 namespace SigmaDimensionsPlugin
 {
     [KSPAddon(KSPAddon.Startup.SpaceCentre, false)]

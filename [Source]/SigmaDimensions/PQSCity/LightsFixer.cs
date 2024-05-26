@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using Kopernicus;
 
-
 namespace SigmaDimensionsPlugin
 {
     [KSPAddon(KSPAddon.Startup.SpaceCentre, true)]
@@ -11,16 +10,13 @@ namespace SigmaDimensionsPlugin
         {
             foreach (CelestialBody cb in FlightGlobals.Bodies)
             {
-                if (cb?.pqsController != null)
+                if (cb != null && cb?.pqsController != null && cb.Has("resizeBuildings"))
                 {
-                    if (cb.Has("resizeBuildings"))
-                    {
-                        float resizeBuildings = (float)cb.Get<double>("resizeBuildings");
+                    float resizeBuildings = (float)cb.Get<double>("resizeBuildings");
 
-                        foreach (Light light in cb.pqsController.GetComponentsInChildren<Light>(true))
-                        {
-                            light.range *= resizeBuildings;
-                        }
+                    foreach (Light light in cb.pqsController.GetComponentsInChildren<Light>(true))
+                    {
+                        light.range *= resizeBuildings;
                     }
                 }
             }

@@ -5,12 +5,13 @@ using UnityEngine;
 using Kopernicus;
 using Kopernicus.ConfigParser.BuiltinTypeParsers;
 
-
 namespace SigmaDimensionsPlugin
 {
     [KSPAddon(KSPAddon.Startup.MainMenu, true)]
     internal class AtmosphereTopLayer : MonoBehaviour
     {
+        //from CashnipLeaf: is it necessary to have this as an instance variable?
+        //TODO: look into whether this can be deleted.
         Ktype curve = Ktype.Exponential;
 
         void Start()
@@ -26,7 +27,7 @@ namespace SigmaDimensionsPlugin
                 FixPressure(body, topLayer);
                 QuickFix(body.atmosphereTemperatureCurve, topLayer);
                 QuickFix(body.atmosphereTemperatureSunMultCurve, topLayer);
-                FixMaxAltitude(body, topLayer);
+                body.atmosphereDepth = topLayer; //from CashnipLeaf: was originally FixMaxAltitude(body, topLayer). I inlined it as it was only a single line.
 
                 Normalize(body, 1 / body.atmosphereDepth);
 
@@ -40,16 +41,26 @@ namespace SigmaDimensionsPlugin
             FloatCurve curve = body.atmospherePressureCurve;
             List<double[]> list = ReadCurve(curve);
 
+            //From CashnipLeaf: Hack fix that isnt necessary anymore. I believe this was necessary at some point to prevent issues with calculating ISP and delta-v,
+            //but that's now handled by Kopernicus. All this does now is break homeworld atmospheres. I've commented it out to disable it.
             /* Remove ISP FIX   ==> */
-            if (body.transform.name == "Kerbin" && list.Count > 0) { list.RemoveAt(0); }
+            //if (body.transform.name == "Kerbin" && list.Count > 0) { list.RemoveAt(0); } 
+
             /* Avoid Bad Curves ==> */
-            if (list.Count < 2) { UnityEngine.Debug.Log("SigmaLog: This pressure curve has " + (list.Count == 0 ? "no keys" : "just one key") + ". I don't know what you expect me to do with that."); return; }
+            if (list.Count < 2) 
+            { 
+                UnityEngine.Debug.Log("SigmaLog: This pressure curve has " + (list.Count == 0 ? "no keys" : "just one key") + ". I don't know what you expect me to do with that."); 
+                return; 
+            }
 
             double maxAltitude = list.Last()[0];
 
             bool smoothEnd = list.Last()[1] == 0 && list.Count > 2;
 
-            if (smoothEnd) list.RemoveAt(list.Count - 1);
+            if (smoothEnd) 
+            {
+                list.RemoveAt(list.Count - 1);
+            }
 
             if (topLayer > maxAltitude)
             {
@@ -67,8 +78,9 @@ namespace SigmaDimensionsPlugin
                 Smooth(list);
             }
 
+            //From CashnipLeaf: See my earlier comment about the hack fix.
             /* Restore ISP FIX ==> */
-            if (body.transform.name == "Kerbin") { list.Insert(0, new[] { 0, 101.325, 0, 0, }); }
+            //if (body.transform.name == "Kerbin") { list.Insert(0, new[] { 0, 101.325, 0, 0, }); }
 
             curve.Load(WriteCurve(list));
         }
@@ -77,16 +89,17 @@ namespace SigmaDimensionsPlugin
         {
             if (topLayer > curve.maxTime)
             {
-                List<double[]> list = ReadCurve(curve); /* Avoid Bad Curves ==> */ if (list.Count == 0) { Debug.Log("AtmosphereTopLayer.QuickFix", "This curve is pointless."); return; }
+                List<double[]> list = ReadCurve(curve); 
+                /* Avoid Bad Curves ==> */ 
+                if (list.Count == 0) 
+                { 
+                    Debug.Log("AtmosphereTopLayer.QuickFix", "This curve is pointless."); 
+                    return; 
+                }
                 list.Last()[3] = 0;
                 list.Add(new double[] { topLayer, list.Last()[1], 0, 0 });
                 curve.Load(WriteCurve(list));
             }
-        }
-
-        void FixMaxAltitude(CelestialBody body, double topLayer)
-        {
-            body.atmosphereDepth = topLayer;
         }
 
         // Editors
@@ -108,9 +121,13 @@ namespace SigmaDimensionsPlugin
                 if (newKey[1] < 0)
                 {
                     if (list.Last()[1] == 0)
+                    {
                         break;
+                    }
                     else
+                    {
                         newKey[1] = 0;
+                    }   
                 }
 
                 list.Add(newKey);
@@ -159,10 +176,19 @@ namespace SigmaDimensionsPlugin
 
             for (int i = 0; i < list.Count; i++)
             {
+                //from CashnipLeaf: this should make what's going on more obvious
+                minPressure = Math.Min(minPressure, list[i][1]);
+                maxPressure = Math.Max(maxPressure, list[i][1]);
+                /* OLD CODE
                 if (list[i][1] < minPressure)
+                {
                     minPressure = list[i][1];
+                }
                 if (list[i][1] > maxPressure)
+                {
                     maxPressure = list[i][1];
+                }
+                */
             }
 
             for (int i = 0; i < list.Count; i++)
@@ -190,15 +216,18 @@ namespace SigmaDimensionsPlugin
         void Normalize(CelestialBody body, double altitude)
         {
             if (body.atmospherePressureCurveIsNormalized)
+            {
                 Multiply(body.atmospherePressureCurve, altitude);
-
+            }
             if (body.atmosphereTemperatureCurveIsNormalized)
+            {
                 Multiply(body.atmosphereTemperatureCurve, altitude);
+            }
         }
 
         void Multiply(FloatCurve curve, double multiplier)
         {
-            List<double[]> list = new List<double[]>();
+            List<double[]> list = new List<double[]>(); 
             list = ReadCurve(curve);
             foreach (double[] key in list)
             {
@@ -249,6 +278,8 @@ namespace SigmaDimensionsPlugin
 
         double[] getK(List<double[]> list)
         {
+            //from CashnipLeaf: is it necessary to decare a K if it just gets returned immediately after its set to a value?
+            //TODO: remove the K
             double[] K = { };
             if (list.Count == 2)
             {
@@ -287,6 +318,17 @@ namespace SigmaDimensionsPlugin
         {
             double dX = X - prevKey[0];
 
+            //from CashnipLeaf: Converted to a switch statement since that's more compact
+            switch (curve)
+            {
+                case Ktype.Exponential:
+                    return prevKey[1] * Math.Exp(dX * K[0]);
+                case Ktype.Logarithmic:
+                    return K[0] * Math.Log(X / prevKey[0]) + prevKey[1];
+                default:
+                    return dX * (K[0] * (X + prevKey[0]) + K[1]) + prevKey[1];
+            }
+            /* OLD CODE
             if (curve == Ktype.Exponential)
             {
                 // Exponential Curve:   Y1/Y0 = EXP(dX * K);
@@ -302,8 +344,10 @@ namespace SigmaDimensionsPlugin
                 // Polynomial Curve:    dY = dX * ( K0 * (X0 + X1) + K1 )
                 return dX * (K[0] * (X + prevKey[0]) + K[1]) + prevKey[1];
             }
+            */
         }
 
+        //from CashnipLeaf: Is there a better way of doing things than this?
         enum Ktype
         {
             Exponential,
@@ -321,11 +365,10 @@ namespace SigmaDimensionsPlugin
             PrintCurve(body.atmosphereTemperatureSunMultCurve, "temperatureSunMultCurve");
         }
 
-        void PrintCurve(List<double[]> list, string name)
-        {
-            PrintCurve(WriteCurve(list), name);
-        }
+        void PrintCurve(List<double[]> list, string name) => PrintCurve(WriteCurve(list), name);
 
+        //from CashnipLeaf: this is on its own despite being referenced by only one other override.
+        //TODO: inline
         void PrintCurve(ConfigNode config, string name)
         {
             FloatCurve curve = new FloatCurve();
