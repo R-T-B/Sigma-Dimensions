@@ -1,7 +1,0 @@
-C:\Users\Owner\OneDrive\Documents\ksp stuff\stuff for modmaking\Plugins\Cloned Repos\Sigma-Dimensions\[Source]\SigmaDimensions\obj\Debug\SigmaDimensions.csproj.AssemblyReference.cache
-C:\Users\Owner\OneDrive\Documents\ksp stuff\stuff for modmaking\Plugins\Cloned Repos\Sigma-Dimensions\[Source]\SigmaDimensions\obj\Debug\SigmaDimensions.csproj.CoreCompileInputs.cache
-C:\Users\Owner\OneDrive\Documents\ksp stuff\stuff for modmaking\Plugins\Cloned Repos\Sigma-Dimensions\[Source]\Distribution\SigmaDimensions.dll
-C:\Users\Owner\OneDrive\Documents\ksp stuff\stuff for modmaking\Plugins\Cloned Repos\Sigma-Dimensions\[Source]\Distribution\SigmaDimensions.pdb
-C:\Users\Owner\OneDrive\Documents\ksp stuff\stuff for modmaking\Plugins\Cloned Repos\Sigma-Dimensions\[Source]\SigmaDimensions\obj\Debug\SigmaDimensions.csproj.CopyComplete
-C:\Users\Owner\OneDrive\Documents\ksp stuff\stuff for modmaking\Plugins\Cloned Repos\Sigma-Dimensions\[Source]\SigmaDimensions\obj\Debug\SigmaDimensions.dll
-C:\Users\Owner\OneDrive\Documents\ksp stuff\stuff for modmaking\Plugins\Cloned Repos\Sigma-Dimensions\[Source]\SigmaDimensions\obj\Debug\SigmaDimensions.pdb
