@@ -5,7 +5,7 @@
 Proof of adoption:
 
 
-![prrof](https://i.imgur.com/AfqTNQn.png)
+![prrof](https://i.imgur.com/aghHzh0.png)
 
 ### Downloads
 - [GitHub](https://github.com/R-T-B/Sigma-Dimensions/releases)
