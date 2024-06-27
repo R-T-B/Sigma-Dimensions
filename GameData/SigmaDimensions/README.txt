@@ -161,6 +161,13 @@ Altitude limits for orbital scanners is multiplied by the "Resize" and "scanAlti
 
 ---
 
+# scienceAltitudeThreshold (default value = 1)
+
+- Can be set to any positive number.
+
+Altitude limits for the border between low and high space is multiplied by "scienceAltitudeThreshold", and the square root of "Resize" times "Rescale".
+
+---
 
 
 
