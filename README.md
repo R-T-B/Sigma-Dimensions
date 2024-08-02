@@ -12,23 +12,12 @@ Proof of adoption:
 
 
 ### Other Links
-- [ChangeLog](https://raw.githubusercontent.com/Sigma88/Sigma-Dimensions/master/Changelog.txt)
-- [Source](https://github.com/Sigma88/Sigma-Dimensions/)
-
-
-### Support
-If you enjoy Sigmas ARR work, please consider supporting Sigma with a small donation.
-
-[![Donate Pounds](https://i.imgur.com/xBBQy19.png)][£][![Donate Euros](https://i.imgur.com/kKYb2lE.png)][€][![Donate Dollars](https://i.imgur.com/TT1Vymu.png)][$]
-
-[£]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=65VBNHB39BTKG&item_name=Sigma-Dimensions&currency_code=GBP "Donate Pounds"
-[€]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=65VBNHB39BTKG&item_name=Sigma-Dimensions&currency_code=EUR "Donate Euros"
-[$]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=65VBNHB39BTKG&item_name=Sigma-Dimensions&currency_code=USD "Donate Dollars"
+- [Source](https://github.com/R-T-B/Sigma-Dimensions/)
 
 
 ### How To Report A Bug
 
-To report a bug or to ask for support, open an issue on [GitHub](https://github.com/Sigma88/Sigma-Dimensions/issues).
+To report a bug or to ask for support, open an issue on [GitHub](https://github.com/R-T-B/Sigma-Dimensions/issues).
 
 
 ### How To Install
