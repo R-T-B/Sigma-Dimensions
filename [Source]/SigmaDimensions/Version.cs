@@ -6,7 +6,7 @@ namespace SigmaDimensionsPlugin
     public class Version : MonoBehaviour
     {
         //from CashnipLeaf: Is this really necessary? Can you not add the version as a string?
-        public static System.Version Number => new System.Version("0.11.3");
+        public static System.Version Number => new System.Version("0.11.4");
 
         void Awake()
         {
