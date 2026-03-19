@@ -1,0 +1,115 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B3769F47-5A16-43C9-995F-1B3B15BE97CC}|SigmaDimensions\\SigmaDimensions.csproj|C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\sigmadimensions\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3769F47-5A16-43C9-995F-1B3B15BE97CC}|SigmaDimensions\\SigmaDimensions.csproj|solutionrelative:sigmadimensions\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{231525C4-FDA3-4EA5-9345-BE2BDE833B75}|SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj|C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\sigmadimensions.burstpqs\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{231525C4-FDA3-4EA5-9345-BE2BDE833B75}|SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj|solutionrelative:sigmadimensions.burstpqs\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{231525C4-FDA3-4EA5-9345-BE2BDE833B75}|SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj|c:\\users\\memphis\\documents\\visual studio 2022\\sigma-dimensions\\[source]\\sigmadimensions.burstpqs\\pqsmod_sigmadimensions_burstpqs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{231525C4-FDA3-4EA5-9345-BE2BDE833B75}|SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj|solutionrelative:sigmadimensions.burstpqs\\pqsmod_sigmadimensions_burstpqs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|SigmaDimensions.BurstPQS||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|SigmaDimensions||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B3769F47-5A16-43C9-995F-1B3B15BE97CC}|SigmaDimensions\\SigmaDimensions.csproj|C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\sigmadimensions\\pqsmod\\pqsmod_sigmadimensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B3769F47-5A16-43C9-995F-1B3B15BE97CC}|SigmaDimensions\\SigmaDimensions.csproj|solutionrelative:sigmadimensions\\pqsmod\\pqsmod_sigmadimensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PQSMod_SigmaDimensions_BurstPQS.cs",
+              "DocumentMoniker": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions.BurstPQS\\PQSMod_SigmaDimensions_BurstPQS.cs",
+              "RelativeDocumentMoniker": "SigmaDimensions.BurstPQS\\PQSMod_SigmaDimensions_BurstPQS.cs",
+              "ToolTip": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions.BurstPQS\\PQSMod_SigmaDimensions_BurstPQS.cs",
+              "RelativeToolTip": "SigmaDimensions.BurstPQS\\PQSMod_SigmaDimensions_BurstPQS.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T22:39:43.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SigmaDimensions.BurstPQS",
+              "DocumentMoniker": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj",
+              "RelativeDocumentMoniker": "SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj",
+              "ToolTip": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj",
+              "RelativeToolTip": "SigmaDimensions.BurstPQS\\SigmaDimensions.BurstPQS.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-19T22:32:32.176Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "SigmaDimensions\\Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "SigmaDimensions\\Properties\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T22:08:55.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SigmaDimensions",
+              "DocumentMoniker": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions\\SigmaDimensions.csproj",
+              "RelativeDocumentMoniker": "SigmaDimensions\\SigmaDimensions.csproj",
+              "ToolTip": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions\\SigmaDimensions.csproj",
+              "RelativeToolTip": "SigmaDimensions\\SigmaDimensions.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-03-19T22:08:52.976Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PQSMod_SigmaDimensions.cs",
+              "DocumentMoniker": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions\\PQSMod\\PQSMod_SigmaDimensions.cs",
+              "RelativeDocumentMoniker": "SigmaDimensions\\PQSMod\\PQSMod_SigmaDimensions.cs",
+              "ToolTip": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions\\PQSMod\\PQSMod_SigmaDimensions.cs",
+              "RelativeToolTip": "SigmaDimensions\\PQSMod\\PQSMod_SigmaDimensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T20:56:53.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions.BurstPQS\\Properties\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "SigmaDimensions.BurstPQS\\Properties\\AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\Memphis\\Documents\\Visual Studio 2022\\Sigma-Dimensions\\[Source]\\SigmaDimensions.BurstPQS\\Properties\\AssemblyInfo.cs",
+              "RelativeToolTip": "SigmaDimensions.BurstPQS\\Properties\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T22:32:32.334Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

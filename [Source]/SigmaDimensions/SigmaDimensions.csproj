@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SigmaDimensionsPlugin</RootNamespace>
     <AssemblyName>SigmaDimensions</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -26,7 +26,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Distribution\</OutputPath>
     <DefineConstants>
     </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -52,22 +52,22 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
-      <HintPath>H:\KSP1123\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>H:\KSP_1124_BIN\KSP_x64_Data\Managed\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Kopernicus">
-      <HintPath>H:\KSP1123\GameData\Kopernicus\Plugins\Kopernicus.dll</HintPath>
+      <HintPath>H:\KSP_1124_BIN\GameData\Kopernicus\Plugins\Kopernicus.dll</HintPath>
     </Reference>
     <Reference Include="Kopernicus.Parser">
-      <HintPath>H:\KSP1123\GameData\Kopernicus\Plugins\Kopernicus.Parser.dll</HintPath>
+      <HintPath>H:\KSP_1124_BIN\GameData\Kopernicus\Plugins\Kopernicus.Parser.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>H:\KSP1123\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>H:\KSP_1124_BIN\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>H:\KSP1123\KSP_x64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>H:\KSP_1124_BIN\KSP_x64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>H:\KSP1123\KSP_x64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>H:\KSP_1124_BIN\KSP_x64_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

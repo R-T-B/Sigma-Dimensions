@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11527.330 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaDimensions", "SigmaDimensions.csproj", "{B3769F47-5A16-43C9-995F-1B3B15BE97CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaDimensions", "SigmaDimensions\SigmaDimensions.csproj", "{B3769F47-5A16-43C9-995F-1B3B15BE97CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SigmaDimensions.BurstPQS", "SigmaDimensions.BurstPQS\SigmaDimensions.BurstPQS.csproj", "{231525C4-FDA3-4EA5-9345-BE2BDE833B75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B3769F47-5A16-43C9-995F-1B3B15BE97CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3769F47-5A16-43C9-995F-1B3B15BE97CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3769F47-5A16-43C9-995F-1B3B15BE97CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{231525C4-FDA3-4EA5-9345-BE2BDE833B75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{231525C4-FDA3-4EA5-9345-BE2BDE833B75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{231525C4-FDA3-4EA5-9345-BE2BDE833B75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{231525C4-FDA3-4EA5-9345-BE2BDE833B75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

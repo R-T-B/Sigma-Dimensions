@@ -3,7 +3,7 @@
 [assembly: AssemblyTitle("Sigma Dimensions")]
 [assembly: AssemblyDescription("The universal rescale mod for KSP.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Sigma88")]
+[assembly: AssemblyCompany("Sigma88 & R-T-B")]
 [assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("Copyright (C) Sigma88 2016")]
 [assembly: AssemblyTrademark("")]
