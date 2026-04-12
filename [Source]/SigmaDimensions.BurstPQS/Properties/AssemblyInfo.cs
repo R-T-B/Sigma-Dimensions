@@ -10,5 +10,5 @@
 [assembly: AssemblyCulture("")]
 [assembly: KSPAssembly("SigmaDimensions.BurstPQS", 1, 0)]
 [assembly: KSPAssemblyDependency("SigmaDimensions", 1, 0)]
-[assembly: KSPAssemblyDependency("BurstPQS", 0, 1, 7)]
+[assembly: KSPAssemblyDependency("BurstPQS", 0, 1, 16)]
 [assembly: AssemblyVersion("1.0.0")]
